@@ -1,0 +1,358 @@
+/* ----- LAYOUT ----- */
+
+
+
+#verNum {
+    display: none;
+}
+
+#banner {
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 84px;
+    text-align: center;
+}
+
+#tools, #main, #template {
+    top: 84px;
+}
+
+#tools {
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    width: 317px;
+    height: 100vh; /* Set height to 100% of the viewport height */ 
+}
+
+#toolsBanner {
+    display: inline-block;
+}
+
+#main {
+    position: absolute;
+    z-index: 1;
+    left: 300px;
+    right: 0px;
+    align-content: left;
+    margin-left: 10px;
+}
+
+#mainForm {
+    display: inline-block;
+    margin: 20px;
+    width: 80%;
+}
+
+/* ----- CONTENT ----- */
+
+/* Style for the contenteditable element */
+.event.multi {
+    width: calc(100% - 210px); /* Adjusted to fit the container */
+    min-height: 40px;
+    padding: 2px;
+    box-sizing: border-box;
+    resize: vertical;
+    border: 0px solid #ccc;
+}
+
+/* Style for contenteditable elements to have a white background */
+[contenteditable="true"] {
+    	background-color: white;
+	color: black;
+	font-size: 16px;
+}
+
+
+.newCase.multi {
+    width: calc(100% - 210px); /* Adjusted to fit the container */
+    min-height: 40px;
+    padding: 2px;
+    box-sizing: border-box;
+    resize: vertical;
+    border: 1px solid #ccc;
+}
+
+/* Ensuring the label for the contenteditable element is correctly positioned */
+.row.qa .event.info {
+    width: 200px;
+    float: left;
+    padding: 1px 0;
+    margin-right: 10px;
+}
+
+.row.qa {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.row.qa.dnShift.sel { 
+width: 100%; /* Ensure this row spans the full width of its container */ 
+}
+
+@media (max-width: 768px) {
+    .row.qa {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .row.qa .event.info, .event.multi {
+        width: 100%;
+    }
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+button {
+    font-size: .85em;
+    cursor: pointer;
+}
+textarea {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* --- banner ---*/
+#banner img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.dropDown {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0px 20px;
+    cursor: pointer;
+}
+.dropDown-button {
+    margin: 15px 0px;
+}
+.dropDown-content {
+    position: absolute;
+    top: 75px;
+    right: 0;
+    text-align: left;
+    display: none;
+    width: 200px;
+}
+.dropDown:hover .dropDown-content {
+    display: block;
+}
+.dropDown-label {
+    text-align: center;
+    padding: 3px;
+    cursor: default;
+}
+.dropDown-items
+{
+    border: solid;
+    border-width: 1px 0px;
+}
+.dropDown-item
+{
+    padding: 5px;
+    text-align: right;
+    cursor: pointer;
+}
+
+.caseFile
+{
+    padding: 5px;
+    text-align: left;
+    cursor: pointer;
+    color: white;
+}
+
+/* --- tools ---*/
+#tools {
+    overflow-y: scroll;
+}
+h2 {
+    text-align: center;
+    margin: 16px 10px 10px;
+    font-size: 1.75em;
+}
+
+#tools fieldset {
+    margin: 10px 15px;
+    padding: 10px;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.timestamp .right {
+    text-align: right;
+}
+#tools button {
+    margin: 5px;
+    padding: 6px;
+}
+.timeStamp button {
+    width: 80px;
+}
+.tsActive, .tsInactive {
+    margin: 5px;
+    padding: 5px;
+    border-style: solid;
+    border-width: 1px;
+    text-align: center;
+    width: 130px;
+    display: inline-block;
+    font-size: .85em;
+}
+#workTime {
+    width: 70px;
+}
+
+#tools select, #tools input {
+    padding: 5px;
+    margin: 5px;
+}
+.scribz select {
+    width: 236px;
+}
+.scribz option {
+    padding: 5px 0px;
+    font-size: 1.4em;
+}
+.scribz input {
+    width: 140px;
+}
+.scribz button {
+    width: 70px;
+}
+
+#tools textarea {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.notes textarea {
+    border: solid;
+    border-width: 1px;
+    width: 245px;
+}
+.notes span {
+    font-size: .95em;
+    margin-left: 5px;
+    margin-right: 15px;
+}
+.notes div {
+    float: right;
+}
+.notes input {
+    width: 150px;
+}
+.pointer {
+    cursor: pointer;
+}
+
+/* --- main --- */
+h3 {
+    font-size: 1.5em;
+    margin: 15px 10px 5px;
+}
+h4 {
+    font-size: 1.2em;
+    display: inline;
+    margin: 10px 0px;
+}
+
+.hdwrCopy {
+    padding: 6px 10px;
+    margin-left: 30px;
+}
+
+.inSet {
+    margin: 10px;
+}
+.single {
+    overflow-y: auto;
+}
+.row {
+    clear: both;
+}
+.dnShift {
+    margin-top: 10px;
+}
+.dnShift15 {
+    margin-top: 15px;
+}
+.dnShift20 {
+    margin-top: 20px;
+}
+.indent {
+    margin-left: 30px;
+}
+.info {
+    width: 200px;
+    float: left;
+    padding: 2px 0px;
+}
+.single, .line {
+    width: 400px;
+}
+.a textarea {
+    width: 1080px;
+}
+.tel {
+    width: 180px;
+}
+.datInfo input {
+    width: 70px;
+    text-align: center;
+}
+.datInfo button {
+    padding: 5px 20px;
+    margin-left: 20px;
+}
+.copy button {
+    padding: 5px 10px;
+}
+.bottom button {
+    margin: 15px;
+}
+.sel {
+    width: fit-content;
+}
+.sel select {
+    border: none;
+    background-color: transparent;
+    font-size: 1em;
+    padding-bottom: 2px;
+}
+#copyHole {
+    position: fixed;
+    top: 0;
+}
+
+.copyright {
+    text-align: center;
+    margin: 5px;
+    font-size: .85em;
+}
+#copyright {
+    text-align: center;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.white-text {
+    color: white;
+}
+
+
+/*
+TOP | RIGHT | BOTTOM | LEFT
+TOP | RIGHT & LEFT | BOTTOM
+TOP & BOTTOM | RIGHT & LEFT
+*/

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>NoteWorthy</title>
+    <link rel="stylesheet" type="text/css" href="data/NoteWorthy.css">
+    <link rel="stylesheet" type="text/css" href="data/WorthyColor.css">
+</head>
+
+<body onload="loadPage()">
+    <label id="verNum">Version 1.5</label>
+    <div id="banner">
+        <img id="logo" src="data/NoteWorthy.png" alt="NoteWorthy">
+        <div class="dropDown" id="menu">
+            <img id="menuIcon" class="dropDown-button" src="data/menuLtGry40.png" alt="menu">
+            <div class="dropDown-content">
+                <div class="dropDown-item" onclick="window.open('data/podChat.html', 'PodChat', 'height=400,width=800,scrollbars=yes')">PodChat</div>
+                <div class="dropDown-item" onclick="window.open('data/Hammer.html', 'Hammer Chat', 'height=400,width=800,scrollbars=yes')">Hammer Chat</div>
+                <div class="dropDown-item" onclick="window.open('data/duoTemp.html', 'DUO Request', 'height=400,width=800,scrollbars=yes')">DUO Request</div>
+                <div class="dropDown-item" onclick="window.open('data/SolutionsTemp.html', 'Client Solutions', 'height=500,width=800,scrollbars=yes')">Client Solutions</div>
+                <div class="dropDown-item" onclick="window.open('data/nightEsc.html', 'Mid Shift', 'height=500,width=800,scrollbars=yes')">Mid Shift</div>
+                <div class="dropDown-item" onclick="window.open('data/printTmp.html', 'Printer', 'height=500,width=800,scrollbars=yes')">Printer</div>
+                <div class="dropDown-item" onclick="window.open('data/T3Esc.html', 'General T3 Escalation', 'height=500,width=800,scrollbars=yes')">T3 Escalation</div>
+                <div class="dropDown-item" onclick="window.open('data/TSinstall.html', 'TS Software Installation', 'height=500,width=800,scrollbars=yes')">TS Software Installation</div>
+                <div class="dropDown-item" onclick="window.open('data/GPOmap.html', 'Map Drive GPO Changes', 'height=500,width=800,scrollbars=yes')">Map Drive GPO Changes</div>
+                <div class="dropDown-item" onclick="window.open('data/buildRoom.html', 'Build Room Template', 'height=500,width=800,scrollbars=yes')">Build Room</div>
+                <hr/>
+                <div class="label" align="right" style="font-size: 26px">SI</div>
+                <div class="dropDown-item" onclick="window.open('data/GeneralSI.html', 'General SI Help', 'height=500,width=800,scrollbars=yes')">General SI Help</div>
+                <div class="dropDown-item" onclick="window.open('data/PhoneGeneral.html', 'General Phone Help', 'height=500,width=800,scrollbars=yes')">General Phone Help</div>
+                <div class="dropDown-item" onclick="window.open('data/shaperTemp.html', 'Network Shaper', 'height=500,width=800,scrollbars=yes')">Network Shaper</div>
+                <div class="dropDown-item" onclick="window.open('data/NewPhone.html', 'New Phone Setup', 'height=500,width=800,scrollbars=yes')">New Phone Setup</div>
+                <div class="dropDown-item" onclick="window.open('data/PhoneUser.html', 'Phone Add/Remove User', 'height=500,width=800,scrollbars=yes')">Phone Add/Remove User</div>
+                <hr/>
+                <div class="dropDown-item" onclick="about()">About</div>
+                <div class="copyright">&copy;</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tools">
+        <h2 onclick="toolsDisp()">Tools</h2>
+        <fieldset class="timeStamp">
+            <legend>Timestamps</legend>
+            <div class="left">
+                <button type="button" class="time" id="ts1button" onclick="getStamp(this)">Begin</button><br/>
+                <button type="button" class="time" id="ts2button" onclick="getStamp(this)">Finish</button>
+            </div>
+            <div class="right">
+                <label class="tsInactive time" id="ts1">mm/dd/yy - hh:mm:ss</label><br/>
+                <label class="tsInactive time" id="ts2">mm/dd/yy - hh:mm:ss</label><br/>
+                <label class="tsInactive" id="workTime">Undefined</label>
+            </div>
+        </fieldset>
+        <fieldset class="scribz">
+            <legend>ScR!bz</legend>
+            <div>
+                <select id="scribz" onchange="updateScribzIn(this)">
+                    <option selected class="ghost">- Select Scribz -</option>
+                </select>
+            </div>
+            <div>
+                <input type="text" id="scribzIn" placeholder="- none -">
+                <button type="button" onclick="scribeScribz()">Write It!</button>
+            </div>
+        </fieldset>
+        <fieldset class="notes">
+            <legend>Notes</legend>
+            <textarea id="activeIn_default" cols="25" rows="5" autofocus></textarea>
+            <div><span onclick="tickMsg()" class="pointer">Ticket #</span><input id="tickNum" type="text"></div>
+        </fieldset>
+	<fieldset class="recentCases">
+	    <legend>Recent Cases</legend>
+	    <div class="caseFile" onclick="window.open('data/recentCases.html', 'recentCases', 'height=400,width=800,scrollbars=yes')"><u>Last Case Copied</u></div>
+	</fieldset>
+	</div>
+    <div id="main">
+        <form id="mainForm">
+            <h3>Case Details (New Case)</h3>
+            <hr>
+<fieldset>
+    <div class="inSet">
+	<div class="row dnShift">
+    	    <span class="newCase info">User(s) Affected:</span>
+    	    <textarea class="newCase single" rows="1" id="user" oninput="forceStamp()" onkeyup="resize(this)" onfocusout="focusOutDuo(this,'contact')"></textarea>
+	</div>
+        <div class="row dnShift">
+            <span class="newCase info">Description of Issue:</span>
+            <textarea class="newCase multi" cols="50" rows="2" onkeyup="resize(this)" onfocusout="focusOutDuo(this,'desc')" placeholder="(Include error messages.)"></textarea>
+        </div>
+        <div class="row dnShift">
+            <span class="info"><h4 class="newCase">Hardware Affected:</h4></span>
+        </div>
+        <div class="row dnShift indent">
+            <span class="newCase info">Server/Workstation/etc:</span>
+            <textarea class="newCase single" rows="1" onkeyup="resize(this)" onfocusout="focusOutDuo(this,'hdwrA')" placeholder="Server/Workstation/Thin Client"></textarea>
+        </div>
+        <div class="row dnShift indent">
+            <span class="newCase info">Printer/Scanner:</span>
+            <textarea class="newCase single" rows="1" onkeyup="resize(this)" onfocusout="focusOutDuo(this,'hdwrB')" placeholder="Printer/Scanner"></textarea>
+        </div>
+        <div class="row dnShift indent">
+            <span class="newCase info">Other Hardware:</span>
+            <textarea class="newCase single" rows="1" onkeyup="resize(this)" onfocusout="focusOutDuo(this,'hdwrC')" placeholder="Other Hardware Not Listed"></textarea>
+        </div>
+        <div class="row dnShift">
+            <span class="newCase info">Software Affected:</span>
+            <textarea class="newCase single" rows="1" onkeyup="resize(this)" onfocusout="focusOutDuo(this,'apps')"></textarea>
+        </div>
+	<div class="row dnShift">
+   	    <span class="newCase info">When Issue Started:</span>
+    	    <input type="text" class="newCase single" id="started" rows="1" onkeyup="resize(this)" onfocusout="focusOutDuo(this, 'started')" style="width:100px;">
+    	    <button type="button" onclick="setDate('started')">Today</button>
+	</div>
+        <div class="row dnShift">
+            <span class="newCase info">Direct Callback Number:</span>
+            <input type="text" class="newCase tel">
+        </div>
+        <div class="row dnShift copy">
+            <button type="button" onclick="clipSec('newCase')">Copy Section to Clipboard</button>
+            <button type="button" onclick="forceCopy()">Force Copy Section to Event Notes</button>
+        </div>
+    </div>
+</fieldset>
+
+
+<h3>Event Notes</h3>
+<hr>
+<fieldset>
+    <div class="inSet">
+	<div class="row qa">
+    	    <span class="event info">Contact:</span>
+    	    <textarea class="event line" id="contact" rows="1" oninput="forceStamp()"></textarea>
+	</div>
+        <div class="row qa">
+            <span class="event info">Description of Issue:</span>
+            <textarea class="event multi" id="desc" rows="2" onkeyup="resize(this)" onchange="resize(this)" onfocusout="fit(this)" placeholder="(Include error messages.)"></textarea>
+        </div>
+        <div class="row dnShift">
+            <span class="info"><h4 class="event">Hardware Affected:</h4></span>
+        </div>
+        <div class="row qa indent dnShift">
+            <span class="event info">Server/Workstation/etc:</span>
+            <textarea class="event single" id="hdwrA" rows="1" onkeyup="resize(this)" onfocusout="focusOutDuo(this,'hdwr')" placeholder="Server/Workstation/Thin Client"></textarea>
+        </div>
+        <div class="row qa dnShift indent">
+            <span class="event info">Printer/Scanner:</span>
+            <textarea class="event single" id="hdwrB" rows="1" onkeyup="resize(this)" onfocusout="focusOutDuo(this,'hdwr')" placeholder="Printer/Scanner"></textarea>
+        </div>
+        <div class="row qa dnShift indent">
+            <span class="event info">Other Hardware:</span>
+            <textarea class="event single" id="hdwrC" rows="1" onkeyup="resize(this)" onfocusout="focusOutDuo(this,'hdwr')" placeholder="Other Hardware Not Listed"></textarea>
+        </div>
+        <div class="row qa dnShift15">
+            <span class="event info">Software Affected:</span>
+            <textarea class="event single" id="apps" rows="1" onkeyup="resize(this)" onfocusout="fit(this)"></textarea>
+        </div>
+        <div class="row qa dnShift">
+            <span class="event info">Troubleshooting Steps:</span>
+            <div class="event multi" id="trbl" contenteditable="true" style="border: 1px solid #ccc; padding: 2px; min-height: 100px;"></div>
+        </div>
+        <div class="row qa dnShift sel">
+            <span class="event info">Next Steps:</span>
+            <textarea class="event multi" id="next" rows="2" onkeyup="resize(this)" onfocusout="fit(this)" style="min-width: 100px;"></textarea>
+        </div>
+        <div class="row dnShift copy">
+            <button type="button" onclick="clipSec('event')">Copy Section to Clipboard</button>
+	    <span class="white-text">← (Will not copy any images, only text)</span>
+            <br />
+            <br />
+	    <span class="white-text">For screenshots, CTRL + A, then CTRL + C "Troubleshooting Steps" field will copy all content in that field, including images.</span>
+        </div>
+    </div>
+</fieldset>
+<div class="copy bottom">
+    <button type="button" onclick="copyPage()">Copy Ticket to Clipboard</button>
+    <button type="button" onclick="clearAll()">Clear Form</button>
+</div>
+
+
+<span id="copyHole"></span>
+
+</form>
+<div id="copyright">&copy;</div>
+</div>
+</body>
+
+<script src="data/NoteWorthy.js"></script>
+<script src="data/scribz.js"></script>
+<script>
+    window.onresize = toolsDisp();
+</script>
+
+</html>

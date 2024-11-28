@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recent Cases</title>
+    <style> 
+        body {
+            background-color: #1E1E1E;
+            color: lightgrey;
+            font-family: Arial, sans-serif;
+        }
+        .recent-cases h1 {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="recent-cases">
+        <h1>Previous Case</h1>
+        <div id="recentCasesContent"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const content = localStorage.getItem('recentCasesContent');
+            if (content) {
+                document.getElementById('recentCasesContent').innerText = content;
+            } else {
+                document.getElementById('recentCasesContent').innerText = 'No recent cases available.';
+            }
+        });
+    </script>
+</body>
+</html>

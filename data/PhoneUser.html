@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>IverScribe Phone User Add/Remove Template</title>
+
+    <link rel="stylesheet" type="text/css" href="IverScribe.css">
+    <link rel="stylesheet" type="text/css" href="ScribeColor.css">
+
+    <style>
+        #template {
+            /* In Iverscribe.css:
+            top: 84px;*/
+            width: 772px;
+            position: absolute;
+            margin: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            /* In ScribeColor.css:
+            background-color: #1E1E1E;
+            color: lightgrey;*/
+            min-width: 771px;
+        }
+        #template fieldset {
+            margin-top: 20px;
+        }
+        #template .dnShift {
+            margin-top: 5px;
+        }
+        #template textarea {
+            /*max-width: 505px;*/
+            width: 494px;
+            /*width: 100%;*/
+        }
+        #template .copy {
+            text-align: center;
+        }
+        .PhoneUser input {
+            /*width: 602px;*/
+            width: 700px;
+            clear: both;
+        }
+        .PhoneUser select {
+            margin-left: 10px;
+        }
+        .except {
+            width: auto;
+            margin-right: 10px;
+        }
+        .docLink {
+            margin: 10px 0px;
+            text-align: right;
+        }
+        a {
+            color: dodgerblue;
+        }
+        a:visited {
+            color: dodgerblue;
+        }
+    </style>
+</head>
+
+<body onbeforeunload="copySec('PhoneUser')">
+    <div id="banner">
+        <h1>Phone User Add/Remove Template</h1>
+    </div>
+    <div id="template">
+        <fieldset>
+            <div class="inSet">
+                <div class="row dnShift">
+                    <span class="PhoneUser info">Username:</span>
+                    <input type="text" class="PhoneUser line" size="60">
+                </div>
+                <div class="row dnShift">
+                    <span class="PhoneUser info">Extension to be assigned/removed:</span>
+                    <textarea class="PhoneUser multi" cols="60" rows="1" onkeyup="resize(this)" onfocusout="fit(this)"></textarea>
+                </div>
+                <div class="row dnShift">
+                    <span class="PhoneUser info">MAC Address of Phone:</span>
+                    <textarea class="PhoneUser multi" cols="60" rows="1" onkeyup="resize(this)" onfocusout="fit(this)"></textarea>
+                </div>
+            </div>
+        </fieldset>
+        <div class="row copy"><button type="button" onclick="copySec('PhoneUser')">Copy Section to Clipboard</button></div>
+        <span id="copyHole"></span>
+        <div class="copyright"><br>&copy; Kyle C. Iverson</div>
+    </div>
+</body>
+
+<script>
+    function resize (box)
+    {
+        setTimeout(function(){if (box.scrollHeight > (box.clientHeight + 1)) {box.rows += 1;}},1);
+    }
+    function fit (box)
+    {
+        while ((!(box.scrollHeight > (box.clientHeight + 1))) && (box.rows > 1)) {box.rows -= 1;}
+        resize(box);
+    }
+    function copySec (sect)
+    {
+        var list = document.getElementsByClassName(sect);
+        console.log(list[1].value);
+        if (list == null)
+        {
+            console.log("function copySec(sect): sect not found");
+            return;
+        }
+        var out = "";
+        for (var i = 0; i < list.length; i += 2)
+        {
+            if (list[i+1].value.replace(' ','').replace('\n','') != '')
+            {
+                if (out != '') {out += '\n';}
+                out += list[i].innerHTML;
+                switch (list[i+1].className.replace(sect,'').replace(' ',''))
+                {
+                    case "multi":
+                        if (list[i+1].value.split('\n').length > 1)
+                        {
+                            out += ('\n' + list[i+1].value);
+                            break;
+                        }
+                    case "line":
+                    case "sel":
+                        out += (' ' + list[i+1].value);
+                        break;
+                    default:
+                        console.log("function copySec(sect): unidentified class: " + list[i+1].className);
+                }
+            }
+        }
+        var copyHole = document.createElement("textarea");
+        copyHole.value = out;
+        document.getElementById("copyHole").appendChild(copyHole);
+        copyHole.select();
+        document.execCommand("copy");
+        document.getElementById("copyHole").removeChild(copyHole);
+    }
+</script>
+
+</html>

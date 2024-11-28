@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>IverScribe Night Escalation Template</title>
+
+    <link rel="stylesheet" type="text/css" href="IverScribe.css">
+    <link rel="stylesheet" type="text/css" href="ScribeColor.css">
+
+    <style>
+        #template {
+            /* In Iverscribe.css:
+            top: 84px;*/
+            width: 772px;
+            position: absolute;
+            margin: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            /* In ScribeColor.css:
+            background-color: #1E1E1E;
+            color: lightgrey;*/
+            min-width: 771px;
+        }
+        #template fieldset {
+            margin-top: 5px;
+        }
+        #template .dnShift {
+            margin-top: 5px;
+        }
+        #template h3 {
+            margin-top: 20px;
+        }
+        .tab {
+            margin-left: 15px;
+        }
+        .docLink {
+            margin: 10px 0px;
+            text-align: right;
+        }
+        a {
+            color: dodgerblue;
+        }
+        a:visited {
+            color: dodgerblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="banner">
+        <h1>Night Escalation Procedure</h1>
+    </div>
+    <div id="template">
+        <h3>Escalate to Help Desk Mid-Shift</h3>
+        <fieldset>
+            <div class="inSet">
+                <div>For tickets that require work to be done tonight:</div>
+                <div class="tab">- Must be escalated before 4:00 PM (CDT)</div>
+                <div class="tab">- Contact Help Desk Supervisor for exception</div>
+                <br>
+                <div><b>PROCESS:</b></div>
+                <div class="tab">Step 1: Copy and paste the below template into a new case event. Save as a billable note.</div>
+                <div class="tab">Step 2: E-mail the client advising that the case is going to be worked by our night Team.</div>
+                <div class="tab">Step 3: Escalate ticket to Help Desk Supervisors for case re-assignment.</div>
+            </div>
+        </fieldset>
+
+        <h3>Send to Help Desk Night Queue</h3>
+        <fieldset>
+            <div class="inSet">
+                <div>For tickets that are <u>not time critical</u>.</div>
+                <br>
+                <div><b>PROCESS:</b></div><br>
+                <div class="tab">
+                    <b>Case 1:</b> Task or procedure can be completed without client intervention:<br>
+                    <div class="tab">
+                        1. Write a brief summary including the issue and what you have done so far.<br>
+                        2. Add a description of what you would like done including pertitent information.<br>
+                        3. Escalate the ticket to your Help Desk Supervisor for re-assignment.</div><br>
+                    <b>Case 2:</b> You are unsure of what to do, need direction, or need research done:<br>
+                    <div class="tab">
+                        1. Write a brief summary including the issue and what you have done so far.<br>
+                        2. Ask for advice/direction or if research can be done on the topic.<br>
+                        3. Escalate the ticket to your Help Desk Supervisor for re-assignment.</div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="docLink"><a href="NightEsc.html">Click for Night Escalation Template</a></div>
+    </div>
+</body>
+
+<script>
+    function resize (box)
+    {
+        setTimeout(function(){if (box.scrollHeight > (box.clientHeight + 1)) {box.rows += 1;}},1);
+    }
+    function fit (box)
+    {
+        while ((!(box.scrollHeight > (box.clientHeight + 1))) && (box.rows > 1)) {box.rows -= 1;}
+        resize(box);
+    }
+    function copySec (sect)
+    {
+        var list = document.getElementsByClassName(sect);
+        console.log(list[1].value);
+        if (list == null)
+        {
+            console.log("function copySec(sect): sect not found");
+            return;
+        }
+        var out = "";
+        for (var i = 0; i < list.length; i += 2)
+        {
+            if (list[i+1].value.replace(' ','').replace('\n','') != '')
+            {
+                if (out != '') {out += '\n';}
+                out += list[i].innerHTML;
+                switch (list[i+1].className.replace(sect,'').replace(' ',''))
+                {
+                    case "multi":
+                        if (list[i+1].value.split('\n').length > 1)
+                        {
+                            out += ('\n' + list[i+1].value);
+                            break;
+                        }
+                    case "line":
+                    case "sel":
+                        out += (' ' + list[i+1].value);
+                        break;
+                    default:
+                        console.log("function copySec(sect): unidentified class: " + list[i+1].className);
+                }
+            }
+        }
+        var copyHole = document.createElement("textarea");
+        copyHole.value = out;
+        document.getElementById("copyHole").appendChild(copyHole);
+        copyHole.select();
+        document.execCommand("copy");
+        document.getElementById("copyHole").removeChild(copyHole);
+    }
+</script>
+
+</html>

@@ -1,0 +1,102 @@
+html {
+    background-color: #1E1E1E;
+}
+
+#banner {
+    background-color: black;
+}
+.dropDown-button:hover {
+    background-color: #333333;
+}
+.dropDown:hover .dropDown-content {
+    background-color: silver;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border: none;
+}
+.dropDown-label:hover {
+    /*background-color: darkslategrey;*/
+    background-color: silver;
+}
+.dropDown-item:hover {
+    background-color: teal;
+}
+.dropDown-items {
+    border-color: #555555;
+}
+.dropDown-label {
+    color: #555555;
+}
+
+#tools {
+    background-color: #333333;
+}
+
+#main, #template {
+    background-color: #1E1E1E;
+    color: lightgrey;
+}
+
+h1, h2 {
+    color: lightgrey;
+}
+
+#tools fieldset/*.timeStamp*/ {
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgrey;
+}
+#tools/*.timeStamp*/ legend{
+    color: lightgrey;
+}
+button {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border: none;
+}
+button:active {
+    box-shadow: none;
+    background-color: slategrey;
+}
+.tsActive, .tsInactive {
+    border-color: #555555;
+    color: white;
+}
+.tsInactive {
+    background-color: #ABAB00;
+    color: black;
+}
+.tsActive {
+    background-color: teal;
+}
+.ghost {
+    color: grey;
+}
+.notes {
+    color: lightgrey;
+}
+.notes textarea{
+    border-color: lightgrey;
+}
+#callCount {
+    background-color: white;
+    color: darkslategray;
+    border-color: silver;
+}
+.callCount-button {
+    background-color: teal;
+    color: white;
+}
+
+.sel select {
+    color: lightgrey;
+    outline: none;
+}
+.sel select::-ms-expand { /*the arrow button*/
+    display: none;
+}
+.sel select:hover {
+    background-color: #333333;
+}
+.sel select:active {
+    background-color: #1E1E1E;
+    outline: none;
+}
