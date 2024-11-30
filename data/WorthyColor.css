@@ -10,7 +10,7 @@ html {
 }
 .dropDown:hover .dropDown-content {
     background-color: rgba(50, 50, 50, 0.5);
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 10px 10px 16px 0 rgba(0,0,0,0.8), 0 6px 20px 0 rgba(0,0,0,0.19);
     border: none;
 }
 .dropDown-label:hover {
@@ -42,9 +42,10 @@ html {
 }
 
 #main, #template {
-    background-color: #0E0E0E;
+    background-color: rgba(15, 15, 15, 1);
     color: lightgrey;
 }
+
 
 h1, h2 {
     color: lightgrey;
