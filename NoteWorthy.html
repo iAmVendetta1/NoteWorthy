@@ -70,8 +70,9 @@
             <div><span onclick="tickMsg()" class="pointer">Ticket #</span><input id="tickNum" type="text"></div>
         </fieldset>
 	<fieldset class="recentCases">
-	    <legend>Recent Cases</legend>
+	    <legend>Cases</legend>
 	    <div class="caseFile" onclick="window.open('data/recentCases.html', 'recentCases', 'height=400,width=800,scrollbars=yes')"><u>Last Case Copied</u></div>
+	    <div class="caseFile" onclick="window.open('data/savedCases.html', 'savedCases', 'height=400,width=800,scrollbars=yes')"><u>Saved Cases</u></div>
 	</fieldset>
 	</div>
 
@@ -175,6 +176,8 @@
 <div class="copy bottom">
     <button type="button" onclick="copyPage()">Copy Ticket to Clipboard</button>
     <button type="button" onclick="clearAll()">Clear Form</button>
+    <button type="button" class="right" onclick="saveCase('event')">Save Case</button>
+    <button type="button" class="right" onclick="clearSavedCases()">Clear Saved Cases</button>
 </div>
 
 

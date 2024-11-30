@@ -2,30 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Recent Cases</title>
+    <title>Saved Cases</title>
     <style> 
         body {
             background-color: #1E1E1E;
             color: lightgrey;
             font-family: Arial, sans-serif;
         }
-        .recent-cases h1 {
+        .saved-cases h1 {
             color: lightgrey;
         }
     </style>
 </head>
 <body>
-    <div class="recent-cases">
-        <h1>Previous Case</h1>
-        <div id="recentCasesContent"></div>
+    <div class="saved-cases">
+        <h1>Saved Cases</h1>
+        <div id="savedCasesContent"></div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const content = localStorage.getItem('recentCasesContent');
+            const content = localStorage.getItem('savedCasesContent');
             if (content) {
-                document.getElementById('recentCasesContent').innerText = content;
+                document.getElementById('savedCasesContent').innerText = content;
             } else {
-                document.getElementById('recentCasesContent').innerText = 'No recent cases available.';
+                document.getElementById('savedCasesContent').innerText = 'No saved cases available.';
             }
         });
     </script>

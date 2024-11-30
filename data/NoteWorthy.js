@@ -288,6 +288,17 @@ function clipEvent(sectionClass) {
     clipboard(text);
 }
 
+function saveCase(sectionClass) { 
+    let text = copyEvent(sectionClass); 
+    let existingContent = localStorage.getItem('savedCasesContent') || ''; // Get existing content or initialize as empty
+    let updatedContent = existingContent + (existingContent ? '\n\n________________________________________\n\n' : '') + text; 
+    // Append new content with separator
+    localStorage.setItem('savedCasesContent', updatedContent);
+}
+
+function clearSavedCases() {
+    localStorage.removeItem('savedCasesContent');
+}
 
 function toolsDisp() {
     let bannerHeight = document.getElementById('banner').getBoundingClientRect().bottom;
