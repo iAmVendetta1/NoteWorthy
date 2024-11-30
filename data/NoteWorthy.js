@@ -132,6 +132,8 @@ function clearAll() {
     });
 }
 
+/*Copies relevant information from Case Details down to Event Notes*/
+
 function forceCopy() {
     let elements = document.getElementsByClassName('newCase');
     
@@ -173,7 +175,60 @@ function forceCopy() {
 }
 
 
-function copySec(sectionClass) {
+/*Copies New Case section*/
+
+function copyNewCase(sectionClass) {
+    let elements = document.getElementsByClassName(sectionClass);
+    let copiedText = '';
+    let seenLabels = new Set(); // Track the labels we've already added
+
+    Array.from(elements).forEach((element) => {
+        if (element.tagName === 'TEXTAREA' || element.tagName === 'INPUT') {
+            let label = element.previousElementSibling ? element.previousElementSibling.textContent.trim() : '';
+            if (label && !seenLabels.has(label) && element.value.trim() !== '') {
+                copiedText += `${label}\n${element.value.trim()}\n\n`;
+                seenLabels.add(label); // Track this label
+            }
+        } else if (element.isContentEditable) {
+            let label = element.previousElementSibling ? element.previousElementSibling.textContent.trim() : '';
+            if (label && !seenLabels.has(label) && element.innerHTML.trim() !== '') {
+                // Convert HTML to plain text with line breaks
+                let textContent = element.innerHTML
+                    .replace(/<div>/gi, '\n')
+                    .replace(/<br\s*\/?>/gi, '\n')
+                    .replace(/<\/div>/gi, '')
+                    .replace(/<\/p>/gi, '\n')
+                    .replace(/<p>/gi, '')
+                    .replace(/<[^>]+>/gi, ''); // Remove remaining HTML tags
+                copiedText += `${label}\n${textContent.trim()}\n\n`;
+                seenLabels.add(label); // Track this label
+            }
+        } else if (element.tagName === 'SPAN' && element.querySelector('input')) {
+            // Check for spans with input fields (e.g., "When Issue Started")
+            let label = element.previousElementSibling ? element.previousElementSibling.textContent.trim() : '';
+            let inputValue = element.querySelector('input').value.trim();
+            if (label && !seenLabels.has(label) && inputValue !== '') {
+                copiedText += `${label}\n${inputValue}\n\n`;
+                seenLabels.add(label); // Track this label
+            }
+        }
+    });
+
+    copiedText = copiedText.replace(/&nbsp;/g, ' ').replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/&amp;/g, '&');
+
+    return copiedText.trim();
+}
+
+
+function clipNewCase(sectionClass) {
+    let text = copyNewCase(sectionClass);
+    clipboard(text);
+}
+
+
+/* Copies Event Notes section and stores information in Last Case Copied */
+
+function copyEvent(sectionClass) {
     let elements = document.getElementsByClassName(sectionClass);
     let copiedText = '';
     let seenLabels = new Set(); // Track the labels we've already added
@@ -228,8 +283,8 @@ function clipboard(text) {
     document.body.removeChild(tempTextArea);
 }
 
-function clipSec(sectionClass) {
-    let text = copySec(sectionClass);
+function clipEvent(sectionClass) {
+    let text = copyEvent(sectionClass);
     clipboard(text);
 }
 
@@ -242,8 +297,8 @@ function toolsDisp() {
 function copyPage() {
     let text = `${document.getElementById('verNum').innerHTML}\n\nCASE DETAILS:\n\n`;
     text += document.getElementById('ts1').innerHTML;
-    text += copySec('newCase') ? `\n\n${copySec('newCase')}` : '';
-    text += copySec('event') ? `\n\nEVENT NOTES:\n\n${copySec('event')}` : '';
+    text += copyNewCase('newCase') ? `\n\n${copyNewCase('newCase')}` : '';
+    text += copyEvent('event') ? `\n\nEVENT NOTES:\n\n${copyEvent('event')}` : '';
     text += `\n\n${document.getElementById('ts2').innerHTML}`;
     text += `\n${document.getElementById('workTime').innerHTML}`;
     clipboard(text);

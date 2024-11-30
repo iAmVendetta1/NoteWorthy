@@ -54,7 +54,7 @@ h1, h2 {
 #tools fieldset/*.timeStamp*/ {
     border-style: solid;
     border-width: 1px;
-    border-color: lightgrey;
+    border-color: #D6A553;
 }
 #tools/*.timeStamp*/ legend{
     color: lightgrey;

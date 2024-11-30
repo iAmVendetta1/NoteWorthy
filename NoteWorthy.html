@@ -25,7 +25,7 @@
                 <div class="dropDown-item" onclick="window.open('data/GPOmap.html', 'Map Drive GPO Changes', 'height=500,width=800,scrollbars=yes')">Map Drive GPO Changes</div>
                 <div class="dropDown-item" onclick="window.open('data/buildRoom.html', 'Build Room Template', 'height=500,width=800,scrollbars=yes')">Build Room</div>
                 <hr/>
-                <div class="categoryLabel" align="right" style="font-size: 26px">SI</div>
+                <div class="categoryLabel">SI</div>
                 <div class="dropDown-item" onclick="window.open('data/GeneralSI.html', 'General SI Help', 'height=500,width=800,scrollbars=yes')">General SI Help</div>
                 <div class="dropDown-item" onclick="window.open('data/PhoneGeneral.html', 'General Phone Help', 'height=500,width=800,scrollbars=yes')">General Phone Help</div>
                 <div class="dropDown-item" onclick="window.open('data/shaperTemp.html', 'Network Shaper', 'height=500,width=800,scrollbars=yes')">Network Shaper</div>
@@ -74,6 +74,7 @@
 	    <div class="caseFile" onclick="window.open('data/recentCases.html', 'recentCases', 'height=400,width=800,scrollbars=yes')"><u>Last Case Copied</u></div>
 	</fieldset>
 	</div>
+
     <div id="main">
         <form id="mainForm">
             <h3>Case Details (New Case)</h3>
@@ -117,7 +118,7 @@
             <input type="text" class="newCase tel">
         </div>
         <div class="row dnShift copy">
-            <button type="button" onclick="clipSec('newCase')">Copy Section to Clipboard</button>
+            <button type="button" onclick="clipNewCase('newCase')">Copy Section to Clipboard</button>
             <button type="button" onclick="forceCopy()">Force Copy Section to Event Notes</button>
         </div>
     </div>
@@ -163,7 +164,7 @@
             <textarea class="event multi" id="next" rows="2" onkeyup="resize(this)" onfocusout="fit(this)" style="min-width: 100px;"></textarea>
         </div>
         <div class="row dnShift copy">
-            <button type="button" onclick="clipSec('event')">Copy Section to Clipboard</button>
+            <button type="button" onclick="clipEvent('event')">Copy Section to Clipboard</button>
 	    <span class="white-text">← (Will not copy any images, only text)</span>
             <br />
             <br />
