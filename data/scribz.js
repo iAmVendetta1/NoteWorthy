@@ -38,7 +38,7 @@ function getText (index)
     {
         case "UnlockAcct":
             txt += "- Opened remote session with " + scribzIn + " via BOIT Remote tool\n";
-            txt += "- Logged into " + scribzIn + " with domain admin credentials from BMP\n";
+            txt += "- Logged into " + scribzIn + " with domain admin credentials from BMP";
             txt += "- Opened Active Directory and found " + user + "'s account\n";
             txt += "- Opened " + user + "'s account and unlocked it\n";
             txt += "- Asked " + user + " to try logging in: success\n";
@@ -49,13 +49,13 @@ function getText (index)
             return txt;
         case "RemoteServer":
             txt = "- Opened remote session with " + scribzIn + " via BOIT Remote tool\n";
-            txt += "- Logged into " + scribzIn + " with domain admin credentials from BMP\n";
+            txt += "- Logged into " + scribzIn + " with domain admin credentials from BMP";
             return txt;
         case "RemoteComputer":
-            txt = "- Opened remote session with " + scribzIn + " via BOIT Remote tool\n";
+            txt = "- Opened remote session with " + scribzIn + " via BOIT Remote tool";
             return txt;
         case "LockClose":
-            txt = "- Locked " + scribzIn + " and closed remote session\n";
+            txt = "- Locked " + scribzIn + " and closed remote session";
             return txt;
     }
 }
