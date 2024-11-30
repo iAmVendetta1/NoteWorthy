@@ -257,6 +257,21 @@ h2 {
 }
 
 /* --- main --- */
+
+.floating-container {
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(50, 50, 50, 0.5); /* RGBA for background opacity */
+    border: 1px solid #D6A553;
+    border-radius: 25px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    overflow: auto;
+    max-height: 90vh; /* Adjustable */
+    opacity: 1;
+}
+
 h3 {
     font-size: 1.5em;
     margin: 15px 10px 5px;

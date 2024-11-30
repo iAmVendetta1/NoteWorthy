@@ -8,7 +8,7 @@
 </head>
 
 <body onload="loadPage()">
-    <label id="verNum">Version 1.5</label>
+    <label id="verNum">Version 1.0</label>
     <div id="banner">
         <img id="logo" src="data/NoteWorthy.png" alt="NoteWorthy">
         <div class="dropDown" id="menu">
@@ -25,7 +25,7 @@
                 <div class="dropDown-item" onclick="window.open('data/GPOmap.html', 'Map Drive GPO Changes', 'height=500,width=800,scrollbars=yes')">Map Drive GPO Changes</div>
                 <div class="dropDown-item" onclick="window.open('data/buildRoom.html', 'Build Room Template', 'height=500,width=800,scrollbars=yes')">Build Room</div>
                 <hr/>
-                <div class="label" align="right" style="font-size: 26px">SI</div>
+                <div class="categoryLabel" align="right" style="font-size: 26px">SI</div>
                 <div class="dropDown-item" onclick="window.open('data/GeneralSI.html', 'General SI Help', 'height=500,width=800,scrollbars=yes')">General SI Help</div>
                 <div class="dropDown-item" onclick="window.open('data/PhoneGeneral.html', 'General Phone Help', 'height=500,width=800,scrollbars=yes')">General Phone Help</div>
                 <div class="dropDown-item" onclick="window.open('data/shaperTemp.html', 'Network Shaper', 'height=500,width=800,scrollbars=yes')">Network Shaper</div>
@@ -77,8 +77,8 @@
     <div id="main">
         <form id="mainForm">
             <h3>Case Details (New Case)</h3>
-            <hr>
-<fieldset>
+
+<fieldset class="floating-container">
     <div class="inSet">
 	<div class="row dnShift">
     	    <span class="newCase info">User(s) Affected:</span>
@@ -125,8 +125,7 @@
 
 
 <h3>Event Notes</h3>
-<hr>
-<fieldset>
+<fieldset class="floating-container">
     <div class="inSet">
 	<div class="row qa">
     	    <span class="event info">Contact:</span>

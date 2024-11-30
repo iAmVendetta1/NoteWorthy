@@ -9,7 +9,7 @@ html {
     background-color: #333333;
 }
 .dropDown:hover .dropDown-content {
-    background-color: silver;
+    background-color: rgba(50, 50, 50, 0.5);
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     border: none;
 }
@@ -23,16 +23,26 @@ html {
 .dropDown-items {
     border-color: #555555;
 }
+.dropDown-item {
+    color: lightgrey;
+}
 .dropDown-label {
     color: #555555;
 }
 
+.categoryLabel {
+    text-align: right;
+    font-size: 26px;
+    color: lightgrey;
+}
+
+
 #tools {
-    background-color: #333333;
+    background-color: #1E1E1E;
 }
 
 #main, #template {
-    background-color: #1E1E1E;
+    background-color: #0E0E0E;
     color: lightgrey;
 }
 
