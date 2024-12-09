@@ -268,7 +268,8 @@ function copyEvent(sectionClass) {
     copiedText = copiedText.replace(/&nbsp;/g, ' ').replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/&amp;/g, '&');
 
     // Store copied text in localStorage
-    localStorage.setItem('recentCasesContent', copiedText);
+    // localStorage.setItem('recentCasesContent', copiedText);
+
 
     return copiedText.trim();
 }
